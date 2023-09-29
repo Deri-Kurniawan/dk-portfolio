@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  poweredByHeader: true,
+  productionBrowserSourceMaps: true,
+  trailingSlash: false,
+  images: {
+    domains: ["res.cloudinary.com", "images.pexels.com", "i.pinimg.com"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
