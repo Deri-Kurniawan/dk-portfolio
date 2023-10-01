@@ -35,28 +35,26 @@ export default function DeveloperFeedsPage(): React.ReactNode {
       <div className="w-full pl-1 pr-4">
         <Topbar pageTitle="Developer Feeds" />
       </div>
-      <ScrollArea className="h-screen" type="auto" scrollbars="vertical">
-        <div className="pb-6 pl-1 pr-4">
-          {feedPosts && feedPosts.length > 0 ? (
-            <>
-              {feedPosts.map((post, i) => (
-                <FeedCard
-                  key={post.postId}
-                  className={`${i > 0 ? "mt-6" : ""}`}
-                  {...post}
-                />
-              ))}
-            </>
-          ) : (
-            <div className="flex flex-col items-center justify-center w-full h-full">
-              <h1 className="text-2xl font-bold">No Developer Feed</h1>
-              <p className="mt-4 text-base text-gray-500">
-                There is no post yet, or developer feed is not available.
-              </p>
-            </div>
-          )}
-        </div>
-      </ScrollArea>
+      <div className="pb-6 pl-1 pr-4">
+        {feedPosts && feedPosts.length > 0 ? (
+          <>
+            {feedPosts.map((post, i) => (
+              <FeedCard
+                key={post.postId}
+                className={`${i > 0 ? "mt-6" : ""}`}
+                {...post}
+              />
+            ))}
+          </>
+        ) : (
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            <h1 className="text-2xl font-bold">No Developer Feed</h1>
+            <p className="mt-4 text-base text-gray-500">
+              There is no post yet, or developer feed is not available.
+            </p>
+          </div>
+        )}
+      </div>
     </>
   );
 }
