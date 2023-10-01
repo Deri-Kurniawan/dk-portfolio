@@ -2,7 +2,6 @@ import {
   AppWindowIcon,
   BriefcaseIcon,
   FileBadgeIcon,
-  GalleryHorizontalEndIcon,
   GraduationCapIcon,
   LayoutDashboardIcon,
 } from "lucide-react";
@@ -15,6 +14,11 @@ import hahaReactionImg from "@/assets/images/reactions/haha.png";
 import careReactionImg from "@/assets/images/reactions/care.png";
 import loveReactionImg from "@/assets/images/reactions/love.png";
 import likeReactionImg from "@/assets/images/reactions/like.png";
+import sdImg from "@/assets/images/schools/SD.png";
+import tkImg from "@/assets/images/schools/TK.png";
+import smpImg from "@/assets/images/schools/SMP.png";
+import smaImg from "@/assets/images/schools/SMA.png";
+import universityImg from "@/assets/images/schools/UNIVERSITY.png";
 
 export const navigationList = [
   {
@@ -44,7 +48,7 @@ export const navigationList = [
   },
 ].map((item, i) => {
   let temp = Object({ ...item });
-  if (i !== 0) {
+  if (i !== 0 && i !== 4) {
     temp.href = "//";
   }
   return temp;
@@ -168,8 +172,8 @@ export const gallery = [
   },
   {
     id: 2,
-    type: "video",
-    src: "https://res.cloudinary.com/deri-kurniawan/video/upload/v1655966996/videos/v1_crwtxg.mp4",
+    type: "image",
+    src: "https://images.pexels.com/photos/9443229/pexels-photo-9443229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 3,
@@ -221,3 +225,62 @@ export const reactionOptions: TReactionOption[] = [
     imageSrc: angryReactionImg,
   },
 ].reverse();
+
+export type TEducation = {
+  id: string;
+  title: string;
+  logoSrc: StaticImageData;
+  school: string;
+  yearStart: number;
+  yearEnd: number;
+  imageSrc: string | StaticImageData | null;
+};
+
+export const educationList: TEducation[] = [
+  {
+    id: "university",
+    title: "University/College (Bachelor's Degree in Computer)",
+    school: "Universitas Muhammadiyah Sukabumi",
+    logoSrc: universityImg,
+    yearStart: 2019,
+    yearEnd: 2023,
+    imageSrc:
+      "https://lh5.googleusercontent.com/p/AF1QipMYL15JIJURiK5OvN3dfn-9RPMl14W8Dikx2I81=s1316-k-no",
+  },
+  {
+    id: "senior-high-school",
+    title: "Senior High School (Science Major)",
+    logoSrc: smaImg,
+    school: "SMAN 4 Kota Sukabumi",
+    yearStart: 2016,
+    yearEnd: 2019,
+    imageSrc: null,
+  },
+  {
+    id: "junior-high-school",
+    title: "Junior High School",
+    logoSrc: smpImg,
+    school: "SMPN 1 Cireunghas",
+    yearStart: 2013,
+    yearEnd: 2016,
+    imageSrc: null,
+  },
+  {
+    id: "elementary-school",
+    title: "Elementary School",
+    logoSrc: sdImg,
+    school: "SDN 1 Cimapag",
+    yearStart: 2007,
+    yearEnd: 2013,
+    imageSrc: null,
+  },
+  {
+    id: "kindergarten",
+    title: "Kindergarten",
+    logoSrc: tkImg,
+    school: "TK. Tunas Harapan",
+    yearStart: 2006,
+    yearEnd: 2007,
+    imageSrc: null,
+  },
+];

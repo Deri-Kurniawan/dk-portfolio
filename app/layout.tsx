@@ -51,8 +51,8 @@ export default function RootLayout({
             <Banner />
 
             <div className="mx-auto max-w-[90rem]">
-              <div className="flex h-screen overflow-y-hidden">
-                <div className="w-[330px] hidden lg:block">
+              <div className="flex">
+                <div className="w-[330px] hidden lg:block sticky top-0 h-full">
                   <Navbar />
                 </div>
 
@@ -63,7 +63,7 @@ export default function RootLayout({
                   {children}
                 </Flex>
 
-                <div className="w-[330px] hidden xl:block">
+                <div className="w-[330px] hidden xl:block sticky top-0 h-full">
                   <Complementbar />
                 </div>
               </div>
