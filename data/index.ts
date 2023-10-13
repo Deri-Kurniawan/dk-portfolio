@@ -19,6 +19,7 @@ import tkImg from "@/assets/images/schools/TK.png";
 import smpImg from "@/assets/images/schools/SMP.png";
 import smaImg from "@/assets/images/schools/SMA.png";
 import universityImg from "@/assets/images/schools/UNIVERSITY.png";
+import universityXMbkmImg from "@/assets/images/schools/UNIVERSITY_X_MBKM.png";
 
 export const navigationList = [
   {
@@ -46,12 +47,16 @@ export const navigationList = [
     icon: GraduationCapIcon,
     href: "/education",
   },
+  // {
+  //   name: "Developer Gallery",
+  //   icon: GalleryHorizontalIcon,
+  //   href: "/gallery",
+  // },
 ].map((item, i) => {
-  let temp = Object({ ...item });
-  if (i !== 0 && i !== 4) {
-    temp.href = "//";
+  if (![0, 4, 5].includes(i)) {
+    return { ...item, href: "#not-yet-available" };
   }
-  return temp;
+  return item;
 });
 
 export type TFeedPost = {
@@ -229,14 +234,22 @@ export const reactionOptions: TReactionOption[] = [
 export type TEducation = {
   id: string;
   title: string;
-  logoSrc: StaticImageData;
+  logoSrc: string | StaticImageData;
   school: string;
   yearStart: number;
   yearEnd: number;
-  imageSrc: string | StaticImageData | null;
 };
 
 export const educationList: TEducation[] = [
+  {
+    id: "university-x-msib",
+    title:
+      "Studi Independen Bersertifikat (Pengembang Front-End Web dan Back-End at Dicoding Indonesia)",
+    school: "MBKM ✕ Dicoding Indonesia",
+    logoSrc: universityXMbkmImg,
+    yearStart: 2021,
+    yearEnd: 2022,
+  },
   {
     id: "university",
     title: "University/College (Bachelor's Degree in Computer)",
@@ -244,8 +257,6 @@ export const educationList: TEducation[] = [
     logoSrc: universityImg,
     yearStart: 2019,
     yearEnd: 2023,
-    imageSrc:
-      "https://lh5.googleusercontent.com/p/AF1QipMYL15JIJURiK5OvN3dfn-9RPMl14W8Dikx2I81=s1316-k-no",
   },
   {
     id: "senior-high-school",
@@ -254,7 +265,6 @@ export const educationList: TEducation[] = [
     school: "SMAN 4 Kota Sukabumi",
     yearStart: 2016,
     yearEnd: 2019,
-    imageSrc: null,
   },
   {
     id: "junior-high-school",
@@ -263,7 +273,6 @@ export const educationList: TEducation[] = [
     school: "SMPN 1 Cireunghas",
     yearStart: 2013,
     yearEnd: 2016,
-    imageSrc: null,
   },
   {
     id: "elementary-school",
@@ -272,7 +281,6 @@ export const educationList: TEducation[] = [
     school: "SDN 1 Cimapag",
     yearStart: 2007,
     yearEnd: 2013,
-    imageSrc: null,
   },
   {
     id: "kindergarten",
@@ -281,6 +289,5 @@ export const educationList: TEducation[] = [
     school: "TK. Tunas Harapan",
     yearStart: 2006,
     yearEnd: 2007,
-    imageSrc: null,
   },
 ];
