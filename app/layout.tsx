@@ -1,12 +1,11 @@
 import "@/app/globals.css";
 import "@radix-ui/themes/styles.css";
-import { Flex, Theme } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import Navbar from "@/app/_components/Navbar";
-import Banner from "@/app/_components/Banner";
-import Complementbar from "@/app/_components/Complementbar";
+import Navbar from "@/components/Navbar";
+import Banner from "@/components/Banner";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -49,22 +48,11 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Theme appearance="inherit" radius="large">
             <Banner />
-
             <div className="mx-auto max-w-[90rem]">
               <div className="flex">
-                <div className="w-[330px] hidden lg:block sticky top-0 h-full">
-                  <Navbar />
-                </div>
-
-                <Flex
-                  className="flex-1 px-2 pt-4 lg:pt-6 md:px-4 lg:px-0"
-                  direction="column"
-                >
+                <Navbar />
+                <div className="flex flex-col flex-1 px-2 pt-8 pb-20 md:px-4 lg:px-0 lg:py-6">
                   {children}
-                </Flex>
-
-                <div className="w-[330px] hidden xl:block sticky top-0 h-full">
-                  <Complementbar />
                 </div>
               </div>
             </div>

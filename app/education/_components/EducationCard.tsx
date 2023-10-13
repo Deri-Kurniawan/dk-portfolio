@@ -9,22 +9,24 @@ import {
 import {
   BackpackIcon,
   BlocksIcon,
+  Code2Icon,
   GraduationCapIcon,
-  Link,
   School2Icon,
   SchoolIcon,
 } from "lucide-react";
 import { TEducation } from "@/data";
-import BlurImage from "@/app/_components/BlurImage";
+import BlurImage from "@/components/BlurImage";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-const EducationCard: React.FC<TEducation & { className: string }> = ({
+const EducationCard: React.FC<TEducation & { className?: string }> = ({
   id,
   title,
   logoSrc,
   school,
   yearStart,
   yearEnd,
-  className,
+  className = "",
 }): React.ReactNode => {
   const SelectedIcon = ((): React.ReactNode => {
     const props = {
@@ -32,6 +34,8 @@ const EducationCard: React.FC<TEducation & { className: string }> = ({
     };
 
     switch (id) {
+      case "university-x-msib":
+        return <Code2Icon {...props} />;
       case "university":
         return <GraduationCapIcon {...props} />;
       case "senior-high-school":
@@ -48,34 +52,47 @@ const EducationCard: React.FC<TEducation & { className: string }> = ({
   })();
 
   return (
-    <Card className={className} id={id}>
-      <CardContent className="pt-6 text-center">
-        <div className="flex flex-col items-center justify-center gap-y-2">
-          {SelectedIcon}
-          <div className="flex flex-col items-center justify-center">
-            <a className="relative group" href={`#${id}`}>
-              <div className="absolute flex items-center w-full h-full opacity-0 group-hover:opacity-100 -left-6">
-                <Link size={16} />
-              </div>
-              <CardTitle>{school}</CardTitle>
-            </a>
-            <CardDescription>{title}</CardDescription>
-            <CardDescription>
-              {yearStart} - {yearEnd}
-            </CardDescription>
-            <BlurImage
-              className="w-32 h-32 my-1 rounded-lg"
-              src={logoSrc}
-              width={128}
-              height={128}
-              alt={`${school} Logo`}
-              priority
-            />
-            <CardDescription>(For {yearEnd - yearStart} years)</CardDescription>
+    <Link
+      href={{
+        pathname: `/education`,
+        query: {
+          utm_source: "deri.my.id",
+          utm_medium: "education-card",
+          utm_campaign: "education",
+        },
+      }}
+    >
+      <Card
+        className={cn(
+          className,
+          "hover:shadow-md transition-all duration-200 ease-linear pt-6 text-center relative w-full h-full"
+        )}
+      >
+        <CardContent>
+          <div className="flex flex-col items-center justify-center gap-y-2">
+            {SelectedIcon}
+            <div className="flex flex-col items-center justify-center">
+              <CardTitle className="relative">{school}</CardTitle>
+              <CardDescription>{title}</CardDescription>
+              <CardDescription>
+                {yearStart} - {yearEnd}
+              </CardDescription>
+              <BlurImage
+                className="w-32 h-32 my-1 rounded-lg"
+                src={logoSrc}
+                width={128}
+                height={128}
+                alt={`${school} Logo`}
+                priority
+              />
+              <CardDescription>
+                (For {yearEnd - yearStart} years)
+              </CardDescription>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 

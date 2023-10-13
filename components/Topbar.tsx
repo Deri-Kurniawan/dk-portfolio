@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Heading, Text } from "@radix-ui/themes";
-import Command from "@/app/_components/Command";
+import Command from "./Command";
 
 type TopbarProps = {
   pageTitle: string;

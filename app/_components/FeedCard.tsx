@@ -11,11 +11,11 @@ import {
 } from "@/components/ui/card";
 import { Flex } from "@radix-ui/themes";
 import { TFeedPost, TReactionOption, reactionOptions } from "@/data/index";
-import Reactions from "./Reactions";
+import Reactions from "@/components/Reactions";
 import { cn, timeAgo } from "@/lib/utils";
 import dayjs from "dayjs";
-import BlurVideo from "./BlurVideo";
-import BlurImage from "./BlurImage";
+import BlurVideo from "@/components/BlurVideo";
+import BlurImage from "@/components/BlurImage";
 
 type FeedCardProps = TFeedPost & {
   className?: string;

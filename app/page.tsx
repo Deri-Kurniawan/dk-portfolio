@@ -1,9 +1,10 @@
 import React from "react";
 import { Metadata } from "next";
-import { ScrollArea } from "@radix-ui/themes";
 import { feedPosts } from "@/data";
-import FeedCard from "@/app/_components/FeedCard";
-import Topbar from "@/app/_components/Topbar";
+import FeedCard from "./_components/FeedCard";
+import Topbar from "@/components/Topbar";
+import Complementbar from "@/components/Complementbar";
+import ComplementbarContent from "./_components/ComplementbarContent";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deri.my.id"),
@@ -31,30 +32,39 @@ export const metadata: Metadata = {
 
 export default function DeveloperFeedsPage(): React.ReactNode {
   return (
-    <>
-      <div className="w-full pl-1 pr-4">
-        <Topbar pageTitle="Developer Feeds" />
+    <div className="flex flex-row">
+      <div className="flex-1">
+        <div className="w-full px-2">
+          <Topbar pageTitle="Developer Feeds" />
+        </div>
+        <div className="px-2">
+          {feedPosts && feedPosts.length > 0 ? (
+            <>
+              {feedPosts.map((post, i) => (
+                <FeedCard
+                  key={post.postId}
+                  className={`${i > 0 ? "mt-6" : ""}`}
+                  {...post}
+                />
+              ))}
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center w-full h-full">
+              <h1 className="text-2xl font-bold">No Developer Feed</h1>
+              <p className="mt-4 text-base text-gray-500">
+                There is no post yet, or developer feed is not available.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="pb-6 pl-1 pr-4">
-        {feedPosts && feedPosts.length > 0 ? (
-          <>
-            {feedPosts.map((post, i) => (
-              <FeedCard
-                key={post.postId}
-                className={`${i > 0 ? "mt-6" : ""}`}
-                {...post}
-              />
-            ))}
-          </>
-        ) : (
-          <div className="flex flex-col items-center justify-center w-full h-full">
-            <h1 className="text-2xl font-bold">No Developer Feed</h1>
-            <p className="mt-4 text-base text-gray-500">
-              There is no post yet, or developer feed is not available.
-            </p>
-          </div>
-        )}
+      <div className="h-full">
+        <div className="sticky top-0 pt-4 lg:pt-0">
+          <Complementbar>
+            <ComplementbarContent />
+          </Complementbar>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
