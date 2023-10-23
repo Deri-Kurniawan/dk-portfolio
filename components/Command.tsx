@@ -45,8 +45,9 @@ const Command: React.FC<CommandProps> = ({
         variant="outline"
         onClick={() => setOpen(true)}
       >
-        Menu{" "}
-        <kbd className="ml-2 pointer-events-none inline-flex h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-sm font-medium text-muted-foreground opacity-100">
+        Menu
+        <kbd className="ml-2 pointer-events-none lg:inline-flex h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-sm font-medium text-muted-foreground opacity-100 hidden">
+          {" "}
           <span className="text-xs">
             ⌘ <span className="uppercase">{keyCode}</span>
           </span>
@@ -55,7 +56,7 @@ const Command: React.FC<CommandProps> = ({
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>No results found</CommandEmpty>
           <CommandGroup heading="Page Menu">
             {navigationList.map(({ name, icon: Icon, href }) => (
               <Link key={name} href={href}>

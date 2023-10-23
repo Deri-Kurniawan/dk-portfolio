@@ -3,20 +3,16 @@
 import React from "react";
 import { gallery } from "@/data";
 import { cn } from "@/lib/utils";
-import { Flex, Heading, ScrollArea } from "@radix-ui/themes";
+import { Flex, Heading } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
-import BlurImage from "./BlurImage";
-import BlurVideo from "./BlurVideo";
+import BlurImage from "@/components/BlurImage";
+import BlurVideo from "@/components/BlurVideo";
 
-const Complementbar: React.FC = (): React.ReactNode => {
+const ComplementbarContent: React.FC = (): React.ReactNode => {
   const router = useRouter();
 
   return (
-    <ScrollArea
-      className="w-full h-screen pt-8 pb-4 pl-1 pr-4"
-      scrollbars="vertical"
-      type="auto"
-    >
+    <React.Fragment>
       <Flex gap="2" direction="column">
         <div>
           <Heading as="h5" size="6" weight="bold">
@@ -121,8 +117,8 @@ const Complementbar: React.FC = (): React.ReactNode => {
           </p>
         </div>
       </Flex>
-    </ScrollArea>
+    </React.Fragment>
   );
 };
 
-export default Complementbar;
+export default ComplementbarContent;

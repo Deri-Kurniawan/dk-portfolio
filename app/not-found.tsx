@@ -1,4 +1,4 @@
-import Command from "@/app/_components/Command";
+import Command from "@/components/Command";
 import { Button } from "@/components/ui/button";
 import { Text } from "@radix-ui/themes";
 import React from "react";

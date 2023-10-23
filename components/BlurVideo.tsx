@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React, { ComponentProps, useState, useRef, useEffect } from "react";
-import useVideoPlayer from "@/app/_hook/useVideoPlayer";
+import useVideoPlayer from "@/hook/useVideoPlayer";
 
 interface BlurVideoProps extends ComponentProps<"video"> {
   src: string;
@@ -59,7 +59,7 @@ const BlurVideo: React.FC<BlurVideoProps> = ({
         src={src}
         className={cn(
           props.className,
-          "duration-700 ease-in-out",
+          "duration-200 ease-in-out",
           isLoading ? "blur-sm" : "blur-none"
         )}
         onPlay={handlePlay}

@@ -6,26 +6,34 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import { BabyIcon, Hash, Link } from "lucide-react";
+import { BabyIcon, LinkIcon } from "lucide-react";
 import babyImage from "@/assets/images/baby-play-phone.webp";
-import BlurImage from "@/app/_components/BlurImage";
+import BlurImage from "@/components/BlurImage";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-const BornCard: React.FC<{ className: string }> = ({
-  className,
+const BornCard: React.FC<{ className?: string }> = ({
+  className = "",
 }): React.ReactNode => {
   const id = "born";
   return (
-    <Card className={className} id={id}>
-      <CardContent className="pt-6 text-center">
+    <Card
+      className={cn(
+        className,
+        "pt-6 text-center hover:shadow-md transition-all duration-200 ease-linear"
+      )}
+      id={id}
+    >
+      <CardContent>
         <div className="flex flex-col items-center justify-center gap-y-2">
           <BabyIcon className="w-8 h-8 text-slate-500 dark:text-slate-200" />
           <div className="flex flex-col items-center justify-center">
-            <a className="relative group" href={`#${id}`}>
+            <CardTitle className="relative">
               <div className="absolute flex items-center w-full h-full opacity-0 group-hover:opacity-100 -left-6">
-                <Link size={16} />
+                <LinkIcon size={16} />
               </div>
-              <CardTitle>Born</CardTitle>
-            </a>
+              Born
+            </CardTitle>
             <CardDescription>
               I was born in a small city called Sukabumi, West Java, Indonesia.
             </CardDescription>
